@@ -1,0 +1,20 @@
+insert into Buttons (id, srs, href, name) values ('1', 'icons/CodeFile.png', '/frontend', 'Frontend');
+insert into Buttons (id, srs, href, name) values ('2', 'icons/Design.png', '/designing', 'Проектирование');
+insert into Buttons (id, srs, href, name) values ('3', 'icons/back.png', '/backend', 'Backend');
+insert into Buttons (id, srs, href, name) values ('4', 'icons/Ok.png', '/testing', 'Тестирование');
+insert into Buttons (id, srs, href, name) values ('5', 'icons/Database.png', '/databases', 'Базы данных');
+insert into Buttons (id, srs, href, name) values ('6', 'icons/Synchronize.png', '/CICD', 'CI/CD');
+
+
+pr = Course(id=1, name='Проектирование', description='Этот курс посвящен тому, чтобы ты научился планировать '
+                                                             'и оценивать свои задумки, составлять требования к '
+                                                             'будующим проектам, научился строить макеты и прототипы, '
+                                                             'а также их тестировать!')
+        db.session.add(pr)
+        db.session.commit()
+        prbon1 = Bonuses(description='10 подробных лекций с материалами', crs=pr)
+        prbon2 = Bonuses(description='Сертификат о прохождении курса', crs=pr)
+        prbon3 = Bonuses(description='Коллекцию новых работ в свое портфолио', crs=pr)
+        db.session.add(prbon1)
+        db.session.add(prbon2)
+        db.session.add(prbon3)
