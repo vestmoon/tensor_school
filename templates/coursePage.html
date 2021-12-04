@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>{{course.name}}</title>
+{% endblock %}
+
+{% block body %}
+    <div class="disigning">
+        <h2 class="header">{{course.name}}</h2>
+        <p class="description">{{course.description}}</p>
+
+        <div class="bonuses">
+            <a class="header">А также, ты получишь:</a>
+
+            <div class="list">
+                {% for bonus in course.bonuses %}
+                <div class="list__element">
+                    <img class="courseimg" src="{{ url_for('static', filename=bonus.img) }}"/>
+                    <div class="text">{{bonus.description}}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="signUp">
+            <a class="signUp__button" href="">Записаться</a>
+        </div>
+        <div class="background">
+            <img class="background__img" src="fon.png"/>
+        </div>
+    </div>
+
+{% endblock %}
