@@ -1,36 +1,18 @@
+
 {% extends 'base.html' %}
 
 {% block head %}
     <title>Школа Тензор</title>
+    <script src="..\static\components\course-card.js" defer></script>	
 {% endblock %}
 
-{% block body %}
-    <header>
-            <nav class="navigation">
-                <a class="navigation__element" href="/activity">Наши мероприятия</a>
-                <a class="navigation__element" href="/">Все курсы</a>
-                <a class="navigation__element" href="/about">О школе</a>
-            </nav>
-    </header>
-
-    <div class="main">
-        <h6 class="helloText">  <!-- maintext -->
-        Привет, это Школа Тензор! Здесь ты сможешь записаться на необходимые тебе занятия, чтобы подтянуть hard или soft skills, чтобы комфортно работать и общаться с коллегами!
-        </h6>
-
-        <div class="coursesBlock" > <!-- Список кнопок курсов с: ссылка на src ссылка на href -->
-            {% for button in buttonsList %}
-            <div class="course">
-                <a href="{{button.href}}">
-                    <img class="course__img" src="{{ url_for('static', filename=button.srs) }}"/>
-                </a>
-                <a class="course__name" href="{{button.href}}">{{button.name}}</a>
-            </div>
-            {% endfor %}
-        </div>
-
-        <div class="background">
-            <img class="background__img" src="{{ url_for('static', filename='fon1.png') }}">
-        </div>
-    </div>
+{% block body %}       		
+<div class="main"> 
+    <div class="hello">
+        <h6 class="hello__text"> 
+            Привет, это Школа Тензор! Здесь ты сможешь записаться на необходимые тебе занятия, чтобы подтянуть hard или soft skills, чтобы комфортно работать и общаться с коллегами!
+            </h6>
+    </div>    
+    <div class="coursesBlock"></div>
+</div>  
 {% endblock %}

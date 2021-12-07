@@ -2,32 +2,41 @@
 
 {% block head %}
     <title>{{course.name}}</title>
+    <script src="..\static\components\course-info.js" defer></script>
 {% endblock %}
 
 {% block body %}
+    <div class="courseCard">	
+        <div class="courseCard__img">
+            <img class="img" src="../static/computer.png"/>
+        </div>
+    
     <div class="disigning">
-        <h2 class="header">{{course.name}}</h2>
-        <p class="description">{{course.description}}</p>
-
-        <div class="bonuses">
+        <!-- <h2 class="header">Проектирование</h2>	
+        <p class="description">Этот курс посвящен тому, чтобы ты научился планировать и оценивать свои задумки, составлять требования к будующим проектам, научился строить макеты и прототипы, а также их тестировать!</p>				
+         -->
+        <!-- <div class="bonuses">
             <a class="header">А также, ты получишь:</a>
-
+            
             <div class="list">
-                {% for bonus in course.bonuses %}
                 <div class="list__element">
-                    <img class="courseimg" src="{{ url_for('static', filename=bonus.img) }}"/>
-                    <div class="text">{{bonus.description}}</div>
+                    <img class="courseimg" src="icons/Circled 10.png"/>
+                    <div class="text">10 подробных лекций  с материалами </div>
                 </div>
-                {% endfor %}
+                <div class="list__element">
+                    <img class="courseimg" src="icons/Diploma.png"/>
+                    <div class="text">Сертификат о прохождении курса</div>
+                </div>
+                <div class="list__element">
+                    <img class="img" src="icons/Resume.png"/>
+                    <div class="text">Коллекцию новых работ в свое портфолио</div>
+                </div>
             </div>
-        </div>
-
-        <div class="signUp">
-            <a class="signUp__button" href="">Записаться</a>
-        </div>
-        <div class="background">
-            <img class="background__img" src="fon.png"/>
-        </div>
-    </div>
-
+        </div> -->
+        
+        <!-- <div class="signUp">
+            <a class="signUp__button" href="tensor.html">Записаться</a>
+        </div> -->
+    </div>    
 {% endblock %}
+
