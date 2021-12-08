@@ -19,7 +19,7 @@ class CourseCard {
 const container = document.querySelector('.coursesBlock');
 const options= [
     {icon: "../static/icons/CodeFile.png",    title: 'Frontend',          href: 'tensor.html'}, 
-    {icon: '../static/icons/Design.png',      title: 'Проектирование',    href: '/disigning'}, 
+    {icon: '../static/icons/Design.png',      title: 'Проектирование',    href: '/designing'},
     {icon: '../static/icons/back.png',        title: 'Backend',           href: 'tensor.html'   }, 
     {icon: '../static/icons/Ok.png',          title: 'Тестирование',      href: 'tensor.html'}, 
     {icon: '../static/icons/Database.png',    title: 'Базы данных',       href: 'tensor.html'}, 

@@ -1,7 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 
-from models import *
 
 app = Flask(__name__)
 # app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:root@127.0.0.1:5432/tensorproject"
@@ -52,7 +51,7 @@ def activity():
     return "тут что то про наши движухи"
 
 
-@app.route('/disigning')
+@app.route('/designing')
 def disign():
     course = Course.query.filter_by(name='Проектирование').first()
     return render_template("coursePage.html", course=course)

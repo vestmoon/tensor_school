@@ -1,7 +1,7 @@
 class CourseInfo {
     constructor(title, description, courseAdvantageArray){
         this.container = document.createElement('div');
-        this.container.className = 'disigning';          
+        this.container.className = 'designing';
         this.container.innerHTML = this.render(title, description, courseAdvantageArray); 
     }
     
