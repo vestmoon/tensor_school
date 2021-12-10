@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     {% block head %}{% endblock %}
 </head>
@@ -19,6 +20,14 @@
          </header>
         {% block body %}
         {% endblock %}
-    </div>    
+        <footer class="footer">
+            <div class="footer__icons">
+                <a class="socialnet-icon"><img src="../static/icons/Telegram.png" alt="icon"></a>
+                <a class="socialnet-icon"><img src="../static/icons/Tumblr.png" alt="icon"></a>
+                <a class="socialnet-icon"><img src="../static/icons/Instagram.png" alt="icon"></a>
+                <a class="socialnet-icon"><img src="../static/icons/Facebook.png" alt="icon"></a>
+            </div>
+        </footer>
+    </div>        
 </body>
 </html>

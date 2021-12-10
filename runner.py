@@ -51,11 +51,59 @@ def about():
 def activity():
     return "тут что то про наши движухи"
 
+class Course:
+    name = ""
+    description = ""
+    bonuses = []    
+    img = ""
 
-@app.route('/disigning')
+    def __init__(self, name, description, bonuses, img):
+        Course.name = name        
+        Course.description = description
+        Course.bonuses=bonuses
+        Course.img = img
+   
+@app.route('/design')
 def disign():
-    course = Course.query.filter_by(name='Проектирование').first()
+    # course = Course.query.filter_by(name='Проектирование').first()
+    name = "Проектирование"
+    description = "Этот курс посвящен тому, чтобы ты научился планировать и оценивать свои задумки, составлять требования к будующим проектам, научился строить макеты и прототипы, а также их тестировать!"
+    img = "static/computer.png"
+    bonuses = []  
+    bonuses.append(('static/icons/Circled 10.png',"10 подробных лекций  с материалами"))
+    bonuses.append(('static/icons/Diploma.png',"Сертификат о прохождении курса"))
+    bonuses.append(('static/icons/Resume.png',"Коллекцию новых работ в свое портфолио"))   
+    course = Course(name, description, bonuses, img)    
     return render_template("coursePage.html", course=course)
+
+
+@app.route('/frontend')
+def frontend():
+    # course = Course.query.filter_by(name='Проектирование').first()
+    name = "Frontend"
+    description = "Что-нибудь про front!"
+    img = "static/computer.png"
+    bonuses = []  
+    bonuses.append(('static/icons/Circled 10.png',"10 подробных лекций  с материалами"))
+    bonuses.append(('static/icons/Diploma.png',"Сертификат о прохождении курса"))
+    bonuses.append(('static/icons/Resume.png',"Коллекцию новых работ в свое портфолио"))   
+    course = Course(name, description, bonuses, img)    
+    return render_template("coursePage.html", course=course)
+
+
+@app.route('/backend')
+def backend():
+    # course = Course.query.filter_by(name='Проектирование').first()
+    name = "Backend"
+    description = "Что-нибудь про back!"
+    img = "static/computer.png"
+    bonuses = []  
+    bonuses.append(('static/icons/Circled 10.png',"10 подробных лекций  с материалами"))
+    bonuses.append(('static/icons/Diploma.png',"Сертификат о прохождении курса"))
+    bonuses.append(('static/icons/Resume.png',"Коллекцию новых работ в свое портфолио"))   
+    course = Course(name, description, bonuses, img)    
+    return render_template("coursePage.html", course=course)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
