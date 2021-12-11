@@ -1,18 +1,27 @@
-
 {% extends 'base.html' %}
 
 {% block head %}
     <title>Школа Тензор</title>
-    <script src="..\static\components\course-card.js" defer></script>	
+<!--    <script src="..\static\components\course-card.js" defer></script>-->
 {% endblock %}
 
-{% block body %}       		
-<div class="main"> 
+{% block body %}
+<div class="main">
     <div class="hello">
-        <h6 class="hello__text"> 
+        <h6 class="hello__text">
             Привет, это Школа Тензор! Здесь ты сможешь записаться на необходимые тебе занятия, чтобы подтянуть hard или soft skills, чтобы комфортно работать и общаться с коллегами!
-            </h6>
-    </div>    
-    <div class="courses-block"></div>
-</div>  
+        </h6>
+    </div>
+    <div class="courses-block">
+        {% for button in buttonsList %}
+            <div class="course">
+                <a href="{{button.href}}">
+                    <img class="course__img" src="{{ url_for('static', filename=button.src) }}"/>
+                </a>
+                <a class="course__name" href="{{button.href}}">{{button.name}}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock %}

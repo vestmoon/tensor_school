@@ -1,35 +1,68 @@
 from flask import Flask, render_template, url_for, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 
-from models import *
+
+# Костыльно ориентированное программирование, нужно подумать как это можно сделать нормально
+def eng_to_rus(s):
+    if s == "design":
+        return 'Проектирование'
+    elif s == "backend":
+        return 'Backend'
+    elif s == "frontend":
+        return 'Frontend'
+    elif s == "CICD":
+        return 'CI/CD'
+    elif s == "testing":
+        return 'Тестирование'
+    else:
+        return 'Базы данных'
+
 
 app = Flask(__name__)
-# app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:root@127.0.0.1:5432/tensorproject"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:root@127.0.0.1:5432/tensorProject"
 db = SQLAlchemy(app)
+
+
+# Добавлять в бд на КАКОЙ курс зареган чел
+class Users(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    fio = db.Column(db.String, unique=False, nullable=False)
+    city = db.Column(db.String, unique=False, nullable=False)
+    number = db.Column(db.String, unique=False, nullable=False)
+    mail = db.Column(db.String, unique=False, nullable=False)
+
+    def __repr__(self):
+        return f"<users {self.id}"
+
 
 class Buttons(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    srs = db.Column(db.String, unique=True, nullable=False)
+    src = db.Column(db.String, unique=True, nullable=False)
     href = db.Column(db.String, unique=True, nullable=False)
     name = db.Column(db.String, unique=True, nullable=False)
+
+
+association_table = db.Table('association',
+                             db.Column('course_id', db.Integer, db.ForeignKey('course.id'), primary_key=True),
+                             db.Column('bonus_id', db.Integer, db.ForeignKey('bonus.id'), primary_key=True))
 
 
 class Course(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
     description = db.Column(db.String, unique=False, nullable=False)
-    bonuses = db.relationship('Bonuses', backref='crs')
-    imgSrc = db.Column(db.String, unique=False, nullable=True)
+    img_src = db.Column(db.String, unique=False, nullable=True)
+    bonuses = db.relationship('Bonus', secondary=association_table, lazy='subquery',
+                              backref=db.backref('courses', lazy=True))
 
 
-class Bonuses(db.Model):
+class Bonus(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String, unique=False, nullable=False)
-    imgSrc = db.Column(db.String, unique=False, nullable=True)
-    crs_id = db.Column(db.Integer, db.ForeignKey('course.id'))
+    img_src = db.Column(db.String, unique=False, nullable=True)
+
 
 db.create_all()
-
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -51,58 +84,25 @@ def about():
 def activity():
     return "тут что то про наши движухи"
 
-class Course:
-    name = ""
-    description = ""
-    bonuses = []    
-    img = ""
 
-    def __init__(self, name, description, bonuses, img):
-        Course.name = name        
-        Course.description = description
-        Course.bonuses=bonuses
-        Course.img = img
-   
-@app.route('/design')
-def disign():
-    # course = Course.query.filter_by(name='Проектирование').first()
-    name = "Проектирование"
-    description = "Этот курс посвящен тому, чтобы ты научился планировать и оценивать свои задумки, составлять требования к будующим проектам, научился строить макеты и прототипы, а также их тестировать!"
-    img = "static/computer.png"
-    bonuses = []  
-    bonuses.append(('static/icons/Circled 10.png',"10 подробных лекций  с материалами"))
-    bonuses.append(('static/icons/Diploma.png',"Сертификат о прохождении курса"))
-    bonuses.append(('static/icons/Resume.png',"Коллекцию новых работ в свое портфолио"))   
-    course = Course(name, description, bonuses, img)    
-    return render_template("coursePage.html", course=course)
-
-
-@app.route('/frontend')
-def frontend():
-    # course = Course.query.filter_by(name='Проектирование').first()
-    name = "Frontend"
-    description = "Что-нибудь про front!"
-    img = "static/computer.png"
-    bonuses = []  
-    bonuses.append(('static/icons/Circled 10.png',"10 подробных лекций  с материалами"))
-    bonuses.append(('static/icons/Diploma.png',"Сертификат о прохождении курса"))
-    bonuses.append(('static/icons/Resume.png',"Коллекцию новых работ в свое портфолио"))   
-    course = Course(name, description, bonuses, img)    
-    return render_template("coursePage.html", course=course)
-
-
-@app.route('/backend')
-def backend():
-    # course = Course.query.filter_by(name='Проектирование').first()
-    name = "Backend"
-    description = "Что-нибудь про back!"
-    img = "static/computer.png"
-    bonuses = []  
-    bonuses.append(('static/icons/Circled 10.png',"10 подробных лекций  с материалами"))
-    bonuses.append(('static/icons/Diploma.png',"Сертификат о прохождении курса"))
-    bonuses.append(('static/icons/Resume.png',"Коллекцию новых работ в свое портфолио"))   
-    course = Course(name, description, bonuses, img)    
-    return render_template("coursePage.html", course=course)
+@app.route('/<href>', methods=['POST', 'GET'])
+def controller(href):
+    if request.method == 'GET':
+        course = Course.query.filter_by(name=eng_to_rus(href)).first()
+        return render_template("coursePage.html", course=course)
+    else:
+        try:  # Ловить конкретную ошибку
+            u = Users(fio=request.form['user_fio'],
+                      city=request.form['user_city'],
+                      number=request.form['user_number'],
+                      mail=request.form['user_mail'])
+            db.session.add(u)
+            db.session.commit()
+            return redirect(href)
+        except:
+            db.session.rollback()
+            print("Ошибка добавления в бд")  # Добавить логированние нормальное
+            return redirect('/design')
 
 
 if __name__ == '__main__':
