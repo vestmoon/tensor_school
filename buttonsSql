@@ -1,20 +1,24 @@
-insert into Buttons (id, srs, href, name) values ('1', 'icons/CodeFile.png', '/frontend', 'Frontend');
-insert into Buttons (id, srs, href, name) values ('2', 'icons/Design.png', '/designing', 'Проектирование');
-insert into Buttons (id, srs, href, name) values ('3', 'icons/back.png', '/backend', 'Backend');
-insert into Buttons (id, srs, href, name) values ('4', 'icons/Ok.png', '/testing', 'Тестирование');
-insert into Buttons (id, srs, href, name) values ('5', 'icons/Database.png', '/databases', 'Базы данных');
-insert into Buttons (id, srs, href, name) values ('6', 'icons/Synchronize.png', '/CICD', 'CI/CD');
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
 
 
-pr = Course(id=1, name='Проектирование', description='Этот курс посвящен тому, чтобы ты научился планировать '
+insert into Buttons (id, src, href, name) values ('1', 'icons/CodeFile.png', '/frontend', 'Frontend');
+insert into Buttons (id, src, href, name) values ('2', 'icons/Design.png', '/design', 'Проектирование');
+insert into Buttons (id, src, href, name) values ('3', 'icons/back.png', '/backend', 'Backend');
+insert into Buttons (id, src, href, name) values ('4', 'icons/Ok.png', '/testing', 'Тестирование');
+insert into Buttons (id, src, href, name) values ('5', 'icons/Database.png', '/databases', 'Базы данных');
+insert into Buttons (id, src, href, name) values ('6', 'icons/Synchronize.png', '/CICD', 'CI/CD');
+
+
+insert into course (id, name, description) values('1', 'Проектирование', 'Этот курс посвящен тому, чтобы ты научился планировать '
                                                              'и оценивать свои задумки, составлять требования к '
                                                              'будующим проектам, научился строить макеты и прототипы, '
-                                                             'а также их тестировать!')
-        db.session.add(pr)
-        db.session.commit()
-        prbon1 = Bonuses(description='10 подробных лекций с материалами', crs=pr)
-        prbon2 = Bonuses(description='Сертификат о прохождении курса', crs=pr)
-        prbon3 = Bonuses(description='Коллекцию новых работ в свое портфолио', crs=pr)
-        db.session.add(prbon1)
-        db.session.add(prbon2)
-        db.session.add(prbon3)
+                                                             'а также их тестировать!');
+
+insert into bonus (id, description, img_src) values('1', '10 подробных лекций с материалами', 'icons/Ok.png');
+insert into bonus (id, description, img_src) values('2', 'Сертификат о прохождении курса', 'icons/Ok.png');
+insert into bonus (id, description, img_src) values('3', 'Коллекцию новых работ в свое портфолио', 'icons/Ok.png');
+
+insert into association (course_id, bonus_id) values (1, 1);
+insert into association (course_id, bonus_id) values (1, 2);
+insert into association (course_id, bonus_id) values (1, 3);
