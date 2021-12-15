@@ -19,9 +19,9 @@ def eng_to_rus(s):
 
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:root@127.0.0.1:5432/tensorProject"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:admin@127.0.0.1:5432/tensorproject"
 db = SQLAlchemy(app)
-
+# "postgresql://postgres:root@127.0.0.1:5432/tensorProject"
 
 # Добавлять в бд на КАКОЙ курс зареган чел
 class Users(db.Model):

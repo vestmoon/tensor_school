@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="..\static\components\burger.js" defer></script>
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -16,16 +17,21 @@
                     <a class="navigation__element" href="/">Все курсы</a>
                     <a class="navigation__element" href="/about">О школе</a>
                 </nav>
+                <div class="burger">
+                    <div class="line line1"></div>
+                    <div class="line line2"></div>
+                    <div class="line line3"></div>
+                </div>
             </div>
          </header>
         {% block body %}
         {% endblock %}
         <footer class="footer">
             <div class="footer__icons">
-                <a class="socialnet-icon"><img src="../static/icons/Telegram.png" alt="icon"></a>
-                <a class="socialnet-icon"><img src="../static/icons/Tumblr.png" alt="icon"></a>
-                <a class="socialnet-icon"><img src="../static/icons/Instagram.png" alt="icon"></a>
-                <a class="socialnet-icon"><img src="../static/icons/Facebook.png" alt="icon"></a>
+                <a class="socialnet-icon" href="https://t.me/aotenzor" target="_blank"><img src="../static/icons/Telegram.png" alt="icon"></a>
+                <a class="socialnet-icon" href="https://vk.com/tensor_company" target="_blank"><img src="../static/icons/vk.png" alt="icon"></a>
+                <a class="socialnet-icon" href="https://www.instagram.com/tensor_company/?hl=ru" target="_blank"><img src="../static/icons/Instagram.png" alt="icon"></a>
+                <a class="socialnet-icon" href="https://ru-ru.facebook.com/tensorcompany/" target="_blank"><img src="../static/icons/Facebook.png" alt="icon"></a>
             </div>
         </footer>
     </div>        

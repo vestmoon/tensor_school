@@ -12,8 +12,8 @@ class Popup {
     render() {  return `
         <div class="popup__body">
             <div class="popup__content">
-                <div class="popup__title">Заполни анкету, чтобы<br>записаться на курс</div>
-                <a href="#header" class="popup__close close-popup">X</a>
+                <div class="popup__title">Заполни анкету, чтобы<br>записаться на курс</div>              
+                <a href="#header" class="popup__close close-popup"><img src="../static/icons/x.png" alt="X"></a>
                 <form class="form" method="post" enctype="multipart/form-data">
                     <div class="form__item">
                         <div class="form__label">ФИО</div>

@@ -14,12 +14,10 @@
     </div>
     <div class="courses-block">
         {% for button in buttonsList %}
-            <div class="course">
-                <a href="{{button.href}}">
-                    <img class="course__img" src="{{ url_for('static', filename=button.src) }}"/>
-                </a>
-                <a class="course__name" href="{{button.href}}">{{button.name}}</a>
-            </div>
+            <a class="course" href="{{button.href}}">                
+                <img class="course__img" src="{{ url_for('static', filename=button.src) }}"/>                
+                <div class="course__name">{{button.name}}</div>
+            </a>
         {% endfor %}
     </div>
 </div>

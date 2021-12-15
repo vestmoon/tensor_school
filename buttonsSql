@@ -10,14 +10,11 @@ insert into Buttons (id, src, href, name) values ('5', 'icons/Database.png', '/d
 insert into Buttons (id, src, href, name) values ('6', 'icons/Synchronize.png', '/CICD', 'CI/CD');
 
 
-insert into course (id, name, description) values('1', 'Проектирование', 'Этот курс посвящен тому, чтобы ты научился планировать '
-                                                             'и оценивать свои задумки, составлять требования к '
-                                                             'будующим проектам, научился строить макеты и прототипы, '
-                                                             'а также их тестировать!');
+insert into course (id, name, description, img_src) values('1', 'Проектирование', 'Этот курс посвящен тому, чтобы ты научился планировать и оценивать свои задумки, составлять требования к будующим проектам, научился строить макеты и прототипы, а также их тестировать!', 'static/computer.png');
 
-insert into bonus (id, description, img_src) values('1', '10 подробных лекций с материалами', 'icons/Ok.png');
-insert into bonus (id, description, img_src) values('2', 'Сертификат о прохождении курса', 'icons/Ok.png');
-insert into bonus (id, description, img_src) values('3', 'Коллекцию новых работ в свое портфолио', 'icons/Ok.png');
+insert into bonus (id, description, img_src) values('1', '10 подробных лекций с материалами', 'icons/Circled 10.png');
+insert into bonus (id, description, img_src) values('2', 'Сертификат о прохождении курса', 'icons/Diploma.png');
+insert into bonus (id, description, img_src) values('3', 'Коллекцию новых работ в свое портфолио', 'icons/Resume.png');
 
 insert into association (course_id, bonus_id) values (1, 1);
 insert into association (course_id, bonus_id) values (1, 2);
