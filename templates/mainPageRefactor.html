@@ -13,12 +13,12 @@
         </h6>
     </div>
     <div class="courses-block">
-        {% for button in buttonsList %}
+        {% for course in courseList %}
             <div class="course">
-                <a href="{{button.href}}">
-                    <img class="course__img" src="{{ url_for('static', filename=button.src) }}"/>
+                <a href="{{course.endpoint}}">
+                    <img class="course__img" src="{{ url_for('static', filename=course.button_img) }}"/>
                 </a>
-                <a class="course__name" href="{{button.href}}">{{button.name}}</a>
+                <a class="course__name" href="{{course.endpoint}}">{{course.name}}</a>
             </div>
         {% endfor %}
     </div>
