@@ -2,6 +2,7 @@ DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
 
 
+
 insert into Course (id, name, endpoint, button_img, description, img_src) values ('1', 'Проектирование', 'design', 'icons/Design.png', 'Этот курс посвящен тому, чтобы ты научился планировать '
                                                              'и оценивать свои задумки, составлять требования к '
                                                              'будующим проектам, научился строить макеты и прототипы, '
@@ -9,9 +10,10 @@ insert into Course (id, name, endpoint, button_img, description, img_src) values
 insert into Course (id, name, endpoint, button_img, description, img_src) values ('2', 'Frontend', 'frontend', 'icons/CodeFile.png', 'Этот курс посвящен тому, чтобы ты научился делать фронтенд!', '');
 insert into Course (id, name, endpoint, button_img, description, img_src) values ('3', 'Backend', 'backend', 'icons/back.png', 'Этот курс посвящен тому, чтобы ты научился делать бэкэнд!!', '');
 
-insert into bonus (id, description, img_src) values('1', '10 подробных лекций с материалами', 'icons/Ok.png');
-insert into bonus (id, description, img_src) values('2', 'Сертификат о прохождении курса', 'icons/Ok.png');
-insert into bonus (id, description, img_src) values('3', 'Коллекцию новых работ в свое портфолио', 'icons/Ok.png');
+
+insert into bonus (id, description, img_src) values('1', '10 подробных лекций с материалами', 'icons/Circled 10.png');
+insert into bonus (id, description, img_src) values('2', 'Сертификат о прохождении курса', 'icons/Diploma.png');
+insert into bonus (id, description, img_src) values('3', 'Коллекцию новых работ в свое портфолио', 'icons/Resume.png');
 
 insert into association (course_id, bonus_id) values (1, 1);
 insert into association (course_id, bonus_id) values (1, 2);
