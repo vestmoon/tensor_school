@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block body %}
+<div class="main">
     <div class="course-card">	      
         <div class="course-card__info">
             <h1 class="course-card__name">{{course.name}}</h1>	
@@ -28,5 +29,7 @@
         <div class="course-card__img">
             <img class="course-img" src="{{course.img_src}}"/>
         </div>
-    </div>  
+    </div>      
+</div>
+    
 {% endblock %}
