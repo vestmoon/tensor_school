@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, redirect, request, abort
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:admin@localhost/tensorproject"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:root@127.0.0.1:5432/tensorProject"
 db = SQLAlchemy(app)
 # "postgresql://postgres:root@127.0.0.1:5432/tensorProject"
 
@@ -39,6 +39,9 @@ class Bonus(db.Model):
     description = db.Column(db.String, unique=False, nullable=False)
     img_src = db.Column(db.String, unique=False, nullable=True)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("notFound.html")
 
 @app.before_first_request
 def setup():
@@ -85,7 +88,7 @@ def controller(href):
                 app.logger.error('Ошибка добавления в бд')
                 return redirect('/')
     else:
-        return redirect('/')
+        abort(404)
 
 
 if __name__ == '__main__':

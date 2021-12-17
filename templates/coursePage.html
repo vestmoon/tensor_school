@@ -27,7 +27,7 @@
             </div>                
         </div>      
         <div class="course-card__img">
-            <img class="course-img" src="{{course.img_src}}"/>
+            <img class="course-img" src="{{ url_for('static', filename = course.img_src) }}"/>
         </div>
     </div>      
 </div>
