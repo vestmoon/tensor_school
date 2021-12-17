@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, redirect, request, abort
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:admin@127.0.0.1:5432/tensorproject"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:admin@localhost/tensorproject"
 db = SQLAlchemy(app)
 # "postgresql://postgres:root@127.0.0.1:5432/tensorProject"
 

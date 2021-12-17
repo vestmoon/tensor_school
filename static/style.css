@@ -75,49 +75,56 @@ body {
     margin-left:50px;
     text-decoration:none;
 }
-
 .navigation__element:hover {
     text-decoration: underline;
 }
-.burger {
+.header__burger {
     cursor: pointer;
     display: none;
 }
-.line {
+.burger-line {
     width: 25px;
     height: 3px;
     margin: 5px;
     background-color: #000;
     transition: all .4s ease;
 }
+.burger-open .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.burger-open .line2 {
+    opacity: 0;
+}
+.burger-open .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
 /* -----Главная----- */
-.hello{
-    margin-top: 35px;
-    display: flex;
-    justify-content: center;
-}
-.hello__text {   
-    max-width: 840px;
-    max-height: 110px;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.94);
-}
 .main{
     flex: 1 1 auto;
     max-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
 }
-.courses-block {  
+.main__hello-text{
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+}
+.hello-text {   
+    max-width: 840px;
+    max-height: 110px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.94);
+}
+.main__courses-block {  
     margin-top: 60px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-row-gap: 4em;
     grid-column-gap: 6em;
-    
 }
 .course {
     padding: 5px;
@@ -126,7 +133,6 @@ body {
     justify-content: center;   
     flex-direction: column;
 }
-
 .course__name {
     margin-top: 20px;
     font-style: italic;   
@@ -208,7 +214,6 @@ body {
     max-width: 500px;
     max-height: 500px;
 }
-
 /* -----Подвал----- */
 .footer {
     margin: 15px 0px 5px 15px;
@@ -216,7 +221,6 @@ body {
 .socialnet-icon {
     padding-right: 10px;
 }
-
 /* -----Pop-up----- */
 .popup {
     position: fixed;
@@ -231,7 +235,7 @@ body {
     opacity: 0;
     transition: all 0.7s ease 0s;
 }
-.popup.open {    
+.popup-open{    
     opacity: 1;   
     visibility: visible;
 }
@@ -248,7 +252,7 @@ body {
     opacity: 0;
     transform: translate(0px, -100%); 
 }
-.popup.open .popup__content {
+.popup-open .popup__content {
     transform: translate(0px, 0%); 
     opacity: 1;   
 }
@@ -299,15 +303,12 @@ body {
     border-style: solid;
     border-width: 1px;
     border-radius: 100px;
+    background-color: white;
 }
-.toggle .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-.toggle .line2 {
-    opacity: 0;
-}
-.toggle .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
+.form__incorrectLabel {
+    color: red;
+    font-size: 14px;
+    display: none;
 }
 @media (max-width: 1200px ) {
     .course-img {
@@ -315,14 +316,14 @@ body {
         height: 300px;
     }
     .course-card {
-        margin: 90px 40px 0px 40px;
+        margin: 80px 30px 0px 30px;
     }
 }
 @media (max-width: 950px ) {
     .wrapper {
         background: url('fon2.png') 0 0/100% auto no-repeat;        
     }
-    .courses-block {        
+    .main__courses-block {        
         grid-row-gap: 3em;
         grid-column-gap: 2em;
     }
@@ -330,13 +331,12 @@ body {
         display: none;
     }
     .course-card {
-        margin: 60px 10px 0px 10px;
-    }
- 
+        margin: 50px 0px 0px 0px;
+    } 
     .course-card__description {
         margin-right: 10px;
     }
-    .burger {
+    .header__burger {
         display: block;
     }
     .navigation {
@@ -365,7 +365,7 @@ body {
     .wrapper {
         font-size: 18px;      
     }
-    .courses-block {
+    .main__courses-block {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr; 
         grid-row-gap: 2em;
@@ -375,7 +375,7 @@ body {
         font-size: 24px;  
     }
     .course-card {
-        margin: 40px 10px 0px 10px;
+        margin: 30px 0px 0px 0px;
     }
     .popup__content {        
         padding: 20px 30px;
@@ -405,14 +405,14 @@ body {
     .navigation {
         font-size: 14px;
     } 
-    .courses-block {
+    .main__courses-block {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr; 
         grid-row-gap: 2em;
         grid-column-gap: 2em;
         margin-top: 30px;
     }
-    .hello {
+    .main__hello-text {
         margin-top: 20px;
     }
     .course__img{
@@ -420,7 +420,7 @@ body {
         height: 40px;
     }
     .course-card {
-        margin: 20px 10px 0px 10px;
+        margin: 10px 0px 0px 0px;
     }
     .course-button {
         font-size: 24px;

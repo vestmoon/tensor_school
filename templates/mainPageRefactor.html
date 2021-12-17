@@ -7,19 +7,17 @@
 
 {% block body %}
 <div class="main">
-    <div class="hello">
-        <h6 class="hello__text">
+    <div class="main__hello-text">
+        <h1 class="hello-text">
             Привет, это Школа Тензор! Здесь ты сможешь записаться на необходимые тебе занятия, чтобы подтянуть hard или soft skills, чтобы комфортно работать и общаться с коллегами!
-        </h6>
+        </h1>
     </div>
-    <div class="courses-block">
+    <div class="main__courses-block">
         {% for course in courseList %}
-            <div class="course">
-                <a href="{{course.endpoint}}">
-                    <img class="course__img" src="{{ url_for('static', filename=course.button_img) }}"/>
-                </a>
-                <a class="course__name" href="{{course.endpoint}}">{{course.name}}</a>
-            </div>
+            <a class="course" href="{{course.endpoint}}">
+                <img class="course__img" src="{{ url_for('static', filename=course.button_img) }}">             
+                <div class="course__name">{{course.name}}</div>
+            </a>
         {% endfor %}
     </div>
 </div>
